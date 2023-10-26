@@ -1,10 +1,7 @@
-import { useEffect } from "react";
-import { login, loginCallback } from "../auth/ImmutableAuth.ts";
+
+import { login} from "../auth/ImmutableAuth.ts";
 
 export default function LoginComponent() {
-  // useEffect(() => {
-  //   loginCallback();
-  // }, []);
 
   const handleLogin = async () => {
     try {
