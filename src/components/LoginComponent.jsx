@@ -1,5 +1,5 @@
 
-import { login} from "../auth/ImmutableAuth.ts";
+import { login } from "../auth/ImmutableAuth.ts";
 
 export default function LoginComponent() {
 

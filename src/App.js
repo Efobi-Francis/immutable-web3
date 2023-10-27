@@ -2,6 +2,8 @@ import { createBrowserRouter,createRoutesFromElements, RouterProvider, Route } f
 import { ScoreProvider } from './components/ScoreContext.jsx'; // Import ScoreProvider
 import SelectProvider from './components/SelectContext.jsx';
 
+import { PrivateRoute } from './components/PrivateRoute.jsx';
+
 import RootLayout from './layouts/RootLayout.jsx';
 import SelectContent from './components/bonus/SelectContent.jsx';
 import GamePlay from './components/bonus/GamePlay.jsx';
@@ -15,13 +17,21 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout/>}>
       <Route index element={<Login/>}/>
-      <Route path='basic' element={<SelectProvider><SelectContent/></SelectProvider>}/>
-      <Route path='play' element={<SelectProvider><GamePlay/></SelectProvider>}/>
-
+      <Route path='basic' element={
+        <PrivateRoute>
+          <SelectProvider><SelectContent/></SelectProvider>
+        </PrivateRoute>
+      }/>
+      <Route path='play' element={
+        <PrivateRoute>
+          <SelectProvider><GamePlay/></SelectProvider>
+        </PrivateRoute>
+      }/>
       <Route path='*' element={<NotFound/>}/>
     </Route>
   )
 );
+
 
 
 function App() {

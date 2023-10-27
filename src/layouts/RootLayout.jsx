@@ -12,12 +12,6 @@ export default function RootLayout() {
     const [isClicked, setIsClicked] = useState(false)
     const [currentImage, setCurrentImage] = useState()
 
-    const { mode } = useParams() 
-    
-    useEffect(() => {
-        // Depending on the selected mode, set the appropriate image
-        setCurrentImage(mode)
-    }, [mode]);
     
     const handleClickOpen = (event) => {
         setIsClicked(true)
@@ -31,11 +25,7 @@ export default function RootLayout() {
         <div className=' sm:flex sm:flex-col h-screen bg-gradient-to-b from-[hsl(214,47%,23%)] to-[hsl(237,49%,15%)] lg:relative overflow-hidden'>
             <div className=' container mx-auto flex flex-col h-screen justify-between lg:max-w-3xl'>
                 <header className='flex justify-between items-center outline outline-4 outline-[hsl(217,16%,45%)] rounded-lg mt-5 mb-5 p-2 lg:p-5 lg:mt-10 lg:outline-2 lg:mx-10'>
-                    {!currentImage ? (
-                        <img src={logo} alt="logo" className='h-16 ml-5 lg:h-auto'/>
-                    ):(
-                        <img src={logobonus} alt="logo" className='h-16 ml-5 lg:h-auto'/>
-                    )}
+                    <img src={logobonus} alt="logo" className='h-16 ml-5 lg:h-auto'/>
                     <div className='bg-white flex justify-center w-24 h-24 rounded-lg lg:w-32 lg:h-[115px]'>
                         <ScoreBoard/>
                     </div>
