@@ -17,7 +17,7 @@ const configuration: PassportModuleConfiguration = {
   baseConfig: new config.ImmutableConfiguration({
     environment: config.Environment.SANDBOX,
   }),
-  clientId: process.env.REACT_APP_CLIENT_ID,
+  clientId: process.env.REACT_APP_CLIENT_ID as string,
   redirectUri: `https://fobi-rps-game.netlify.app/`,
   logoutRedirectUri: 'https://fobi-rps-game.netlify.app/logout',
   audience: 'platform_api',
