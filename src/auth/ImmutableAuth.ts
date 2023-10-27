@@ -1,8 +1,6 @@
 import { config, passport } from '@imtbl/sdk';
 import { ImmutableConfiguration } from '@imtbl/sdk/dist/config';
 
-require('dotenv').config();
-
 interface PassportModuleConfiguration {
   baseConfig: ImmutableConfiguration;
   clientId: string;
