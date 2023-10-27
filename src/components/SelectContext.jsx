@@ -11,17 +11,10 @@ export default function SelectProvider({ children }) {
   
   localStorage.setItem('userChoice', choice)
   const navigate = useNavigate()
-  
-  const { mode } = useParams()
 
   const handleUserChoice = (choice) => {
-    if(mode === undefined) {
-      setChoice(choice)
-      navigate(`play`)
-    }else if(mode === TOGGLE_TYPES.BONUS.toLocaleLowerCase()) {
-      setChoice(choice)
-      navigate(`/${mode}/play`)
-    }
+    setChoice(choice)
+    navigate(`play`)
   };
 
   return (
