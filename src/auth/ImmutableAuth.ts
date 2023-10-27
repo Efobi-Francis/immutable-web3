@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 import { config, passport } from '@imtbl/sdk';
 import { ImmutableConfiguration } from '@imtbl/sdk/dist/config';
 
