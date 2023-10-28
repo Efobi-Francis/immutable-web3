@@ -14,14 +14,14 @@ export const AuthProvider = ({ children }) => {
   const login = (data) => {
     // This is where you would typically make a request to your authentication API
     setUser(data)
-    navigate('/select')
+    navigate(`${loginCallback()}`)
     console.log(data)
   };
 
   const logout = () => {
     // This is where you would typically make a request to your authentication API
     setUser(null);
-    navigate("login", { replace: true });
+    navigate("login");
   };
 
   return (
