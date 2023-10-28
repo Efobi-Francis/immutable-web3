@@ -33,7 +33,7 @@ export default function RootLayout() {
                 </header>
 
                 <main className=' text-white flex justify-center'>
-                    {isAuthenticated ? (<Outlet/>) : (<LoginComponent/>)}
+                    {!isAuthenticated ? (<Outlet/>) : (<LoginComponent/>)}
                 </main>
 
                 <footer className=' flex justify-center text-white pb-20 font-Barlow '>
