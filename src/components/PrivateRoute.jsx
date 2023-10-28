@@ -1,5 +1,5 @@
 import { Navigate, useLocation } from "react-router-dom";
-import { login } from "../auth/ImmutableAuth.ts";
+import { login, loginCallback } from "../auth/ImmutableAuth.ts";
 
 export const PrivateRoute = ({ children }) => {
   const location = useLocation();
@@ -12,6 +12,8 @@ export const PrivateRoute = ({ children }) => {
         state={{ from: location }}
       />
     );
+  } else {
+    return loginCallback()
   }
 
   return children;
