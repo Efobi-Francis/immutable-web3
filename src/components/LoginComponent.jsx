@@ -12,5 +12,5 @@ export default function LoginComponent() {
     }
   };
 
-  return <button onClick={handleLogin} className=" text-2xl font-medium bg-[hsl(230,89%,65%)] py-4 px-10 rounded-lg uppercase">Login to play</button>;
+  return <button onClick={handleLogin} className=" font-medium bg-[hsl(230,89%,65%)] py-4 px-10 border-2 border-white rounded-lg tracking-widest text-lg uppercase">Login to play</button>;
 }
