@@ -1,23 +1,19 @@
-import React, { useEffect, useState } from 'react'
-import { Outlet, useParams } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Outlet } from 'react-router-dom'
 
-import logo from '../assets/images/logo.svg'
 import logobonus from '../assets/images/logo-bonus.svg'
-import imagerules from '../assets/images/image-rules.svg'
 import imagerulesbonus from '../assets/images/image-rules-bonus.svg'
 import iconclose from '../assets/images/icon-close.svg'
 import ScoreBoard from '../components/ScoreBoard.jsx'
 
 export default function RootLayout() {
     const [isClicked, setIsClicked] = useState(false)
-    const [currentImage, setCurrentImage] = useState()
-
     
-    const handleClickOpen = (event) => {
+    const handleClickOpen = () => {
         setIsClicked(true)
     }
 
-    const handleClickClose = (event) => {
+    const handleClickClose = () => {
         setIsClicked(false)
     }
 
@@ -41,11 +37,7 @@ export default function RootLayout() {
                         <>
                             <div className='lg:hidden flex flex-col items-center justify-between h-screen w-full absolute top-0 bg-white pb-24 z-30'>
                                 <h1 className='text-[hsl(229,25%,31%)] text-4xl mt-20 font-bold'>RULES</h1>
-                                {!currentImage ? (
-                                    <img src={imagerules} alt="image-rules-bonus"/>
-                                ):(
-                                    <img src={imagerulesbonus} alt="image-rules-bonus"/>
-                                )}
+                                <img src={imagerulesbonus} alt="image-rules-bonus"/>
                                 <button onClick={handleClickClose}>
                                     <img src={iconclose} alt="icon-close"/>
                                 </button>
@@ -61,11 +53,7 @@ export default function RootLayout() {
                                         <img src={iconclose} alt="icon-close"/>
                                     </button>
                                 </div>
-                                {!currentImage ? (
-                                    <img src={imagerules} alt="image-rules" className='mt-16'/>
-                                ):(
-                                    <img src={imagerulesbonus} alt="image-rules" className='mt-7'/>
-                                )} 
+                                <img src={imagerulesbonus} alt="image-rules" className='mt-7'/>
                             </div>
                         </>
                     )}
