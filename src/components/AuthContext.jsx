@@ -1,31 +1,25 @@
 import React, { createContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { loginCallback, logoutCallback } from '../auth/ImmutableAuth.ts';
-import { useLocalStorage } from './useLocalStorage.js';
-
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useLocalStorage('user', null)
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  const navigate = useNavigate();
-
-  const login = (data) => {
+  const login = () => {
     // This is where you would typically make a request to your authentication API
-    setUser(data)
-    navigate(`${loginCallback()}`)
-    console.log(data)
+    loginCallback()
+    setIsAuthenticated(true);
   };
 
   const logout = () => {
     // This is where you would typically make a request to your authentication API
-    setUser(null);
-    navigate("login");
+    logoutCallback();
+    setIsAuthenticated(false);
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

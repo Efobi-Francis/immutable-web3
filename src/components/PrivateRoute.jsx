@@ -3,13 +3,15 @@ import { useContext } from 'react';
 import { AuthContext } from './AuthContext.jsx';
 
 export const PrivateRoute = ({ children }) => {
-  const { user } = useContext(AuthContext)
+  const { isAuthenticated } = useContext(AuthContext);
 
-  if (!user) {
-    // user is not authenticated
-    console.log(user)
-    return <Navigate to="login" />;
-    
+  if (isAuthenticated) {
+    return (
+        children
+    )
+  }else{
+    return(
+        <Navigate to="/login" replace={true} />
+    )
   }
-  return children;
 };
