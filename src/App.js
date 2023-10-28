@@ -18,9 +18,9 @@ const router = createBrowserRouter(
   createRoutesFromElements(
 
     <Route element={<RootLayout/>}>
-        <Route path='/login' element={<LoginComponent/>}/>
+        <Route index element={<LoginComponent/>}/>
         <Route element={<PrivateRoute/>}>
-          <Route path='/' element={<SelectProvider><SelectContent/></SelectProvider>} />
+          <Route path='select' element={<SelectProvider><SelectContent/></SelectProvider>} />
           <Route path='play' element={<SelectProvider><GamePlay/></SelectProvider>} />
         </Route>
         
