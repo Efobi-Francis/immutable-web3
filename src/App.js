@@ -17,10 +17,10 @@ import LoginComponent from './components/LoginComponent.jsx';
 const router = createBrowserRouter(
   createRoutesFromElements(
 
-    <Route path='/' element={<RootLayout/>}>
+    <Route element={<RootLayout/>}>
         <Route path='/login' element={<LoginComponent/>}/>
         <Route element={<PrivateRoute/>}>
-          <Route path='select' element={<SelectProvider><SelectContent/></SelectProvider>} />
+          <Route path='/' element={<SelectProvider><SelectContent/></SelectProvider>} />
           <Route path='play' element={<SelectProvider><GamePlay/></SelectProvider>} />
         </Route>
         
