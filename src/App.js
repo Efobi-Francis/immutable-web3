@@ -16,20 +16,46 @@ import { AuthProvider } from './components/AuthContext.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<RootLayout/>}>
-      <Route path='login' element={<Login/>}/>
-      <Route path='/' element={
-        <PrivateRoute>
-          <SelectProvider><SelectContent/></SelectProvider>
-        </PrivateRoute>
-      }/>
-      <Route path='play' element={
-        <PrivateRoute>
-          <SelectProvider><GamePlay/></SelectProvider>
-        </PrivateRoute>
-      }/>
+    <>
+      <Route path="/" element={<RootLayout/>}>
+        <Route path='login' element={<Login/>}/>
+        <Route path='select' element={
+          <AuthProvider>
+            <PrivateRoute>
+              <SelectProvider>
+                <SelectContent/>
+              </SelectProvider>
+            </PrivateRoute>
+          </AuthProvider>
+        } />
+        <Route path='play' element={
+          <AuthProvider>
+            <PrivateRoute>
+              <SelectProvider>
+                <GamePlay/>
+              </SelectProvider>
+            </PrivateRoute>
+          </AuthProvider>
+        } />
+      </Route>
+
       <Route path='*' element={<NotFound/>}/>
-    </Route>
+    </>
+
+    // <Route path="/" element={<RootLayout/>}>
+    //   <Route path='login' element={<Login/>}/>
+    //   <Route path='/' element={
+    //     <PrivateRoute>
+    //       <SelectProvider><SelectContent/></SelectProvider>
+    //     </PrivateRoute>
+    //   }/>
+    //   <Route path='play' element={
+    //     <PrivateRoute>
+    //       <SelectProvider><GamePlay/></SelectProvider>
+    //     </PrivateRoute>
+    //   }/>
+    //   <Route path='*' element={<NotFound/>}/>
+    // </Route>
   )
 );
 
@@ -38,13 +64,11 @@ const router = createBrowserRouter(
 function App() {
 
   return (
-    <AuthProvider>
-      <ScoreProvider>
-        <div>
-          <RouterProvider router={router}/>
-        </div>
-      </ScoreProvider>
-    </AuthProvider>
+    <ScoreProvider>
+      <div>
+        <RouterProvider router={router}/>
+      </div>
+    </ScoreProvider>
   )
 }
 

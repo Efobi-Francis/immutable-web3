@@ -27,7 +27,10 @@ const passportInstance = new passport.Passport(configuration);
 const provider = passportInstance.connectEvm();
 
 export const login = async () => {
-  return await provider.request({ method: "eth_requestAccounts" });
+  return (
+    await provider.request({ method: "eth_requestAccounts" })
+  )
+
 }
 
 export const loginCallback = () => {
