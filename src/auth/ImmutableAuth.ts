@@ -1,5 +1,6 @@
 import { config, passport } from '@imtbl/sdk';
 import { ImmutableConfiguration } from '@imtbl/sdk/dist/config';
+import { redirect } from 'react-router-dom';
 
 interface PassportModuleConfiguration {
   baseConfig: ImmutableConfiguration;
@@ -31,5 +32,10 @@ export const login = async () => {
 }
 
 export const loginCallback = () => {
-  window.open(`${passportInstance.loginCallback}`)
+  
+  passportInstance.loginCallback().then(async () => {
+    if (await login()) {
+      return redirect("/select")
+    }
+  })
 }

@@ -12,8 +12,6 @@ export const PrivateRoute = ({ children }) => {
         state={{ from: location }}
       />
     );
-  } else {
-    <Navigate to="select" state={{ from: location }}/>
   }
 
   return children;
