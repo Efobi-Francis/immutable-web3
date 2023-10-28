@@ -16,31 +16,27 @@ import { AuthProvider } from './components/AuthContext.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <>
-      <Route path="/" element={<RootLayout/>}>
+
+    <Route path="/" element={<RootLayout/>}>
         <Route index element={<Login/>}/>
         <Route path='select' element={
-          <AuthProvider>
-            <PrivateRoute>
-              <SelectProvider>
-                <SelectContent/>
-              </SelectProvider>
-            </PrivateRoute>
-          </AuthProvider>
+          <PrivateRoute>
+            <SelectProvider>
+              <SelectContent/>
+            </SelectProvider>
+          </PrivateRoute>
         } />
         <Route path='play' element={
-          <AuthProvider>
-            <PrivateRoute>
-              <SelectProvider>
-                <GamePlay/>
-              </SelectProvider>
-            </PrivateRoute>
-          </AuthProvider>
+          <PrivateRoute>
+            <SelectProvider>
+              <GamePlay/>
+            </SelectProvider>
+          </PrivateRoute>
         } />
-      </Route>
 
       <Route path='*' element={<NotFound/>}/>
-    </>
+    </Route>
+   
 
     // <Route path="/" element={<RootLayout/>}>
     //   <Route path='login' element={<Login/>}/>
@@ -64,11 +60,13 @@ const router = createBrowserRouter(
 function App() {
 
   return (
-    <ScoreProvider>
-      <div>
-        <RouterProvider router={router}/>
-      </div>
-    </ScoreProvider>
+    <AuthProvider>
+      <ScoreProvider>
+        <div>
+          <RouterProvider router={router}/>
+        </div>
+      </ScoreProvider>
+    </AuthProvider>
   )
 }
 

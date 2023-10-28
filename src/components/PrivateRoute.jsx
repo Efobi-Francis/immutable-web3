@@ -11,7 +11,7 @@ export const PrivateRoute = ({ children }) => {
     )
   }else{
     return(
-        <Navigate to="/login" replace={true} />
+        <Navigate to='/' replace={true} />
     )
   }
 };

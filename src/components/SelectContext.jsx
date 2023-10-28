@@ -14,7 +14,7 @@ export default function SelectProvider({ children }) {
 
   const handleUserChoice = (choice) => {
     setChoice(choice)
-    navigate(`play`)
+    navigate(`/play`)
   };
 
   return (
