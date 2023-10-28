@@ -5,7 +5,7 @@ import logobonus from '../assets/images/logo-bonus.svg'
 import imagerulesbonus from '../assets/images/image-rules-bonus.svg'
 import iconclose from '../assets/images/icon-close.svg'
 import ScoreBoard from '../components/ScoreBoard.jsx'
-import { PrivateRoute } from '../components/PrivateRoute'
+import { PrivateRoute } from '../components/PrivateRoute.jsx'
 
 
 export default function RootLayout() {
