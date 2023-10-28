@@ -18,7 +18,7 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path="/" element={<RootLayout/>}>
-        <Route path='login' element={<Login/>}/>
+        <Route index element={<Login/>}/>
         <Route path='select' element={
           <AuthProvider>
             <PrivateRoute>
