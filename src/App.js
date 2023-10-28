@@ -17,7 +17,7 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout/>}>
       <Route index element={<Login/>}/>
-      <Route path='basic' element={
+      <Route path='select' element={
         <PrivateRoute>
           <SelectProvider><SelectContent/></SelectProvider>
         </PrivateRoute>
