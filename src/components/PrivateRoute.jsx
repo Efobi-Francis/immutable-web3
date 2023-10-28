@@ -1,9 +1,16 @@
-import { Navigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from './AuthContext.jsx';
 
-export const PrivateRoute = ({ children }) => {
+export const PrivateRoute = () => {
   const { isAuthenticated } = useContext(AuthContext);
 
-  return isAuthenticated ? children : <Navigate to="/login" replace />;
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate('/login');
+    }
+  }, [isAuthenticated, navigate]);
 };
