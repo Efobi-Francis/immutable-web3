@@ -9,10 +9,10 @@ export const PrivateRoute = ( {children} ) => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    if (!isAuthenticated) {
-      navigate('/login');
+    if (isAuthenticated) {
+      return children
     } else {
-        return children
+        return navigate('/login');
     }
   }, [isAuthenticated, navigate]);
 };
