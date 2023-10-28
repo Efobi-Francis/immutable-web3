@@ -10,31 +10,22 @@ import GamePlay from './components/bonus/GamePlay.jsx';
 
 import NotFound from './components/NotFound.jsx';
 import './App.css'
-import Login from './components/LoginComponent.jsx';
 import { AuthProvider } from './components/AuthContext.jsx';
+import LoginComponent from './components/LoginComponent.jsx';
 
 
 const router = createBrowserRouter(
   createRoutesFromElements(
 
-    <Route path="/" element={<RootLayout/>}>
-        <Route index element={<Login/>}/>
-        <Route path='select' element={
-          <PrivateRoute>
-            <SelectProvider>
-              <SelectContent/>
-            </SelectProvider>
-          </PrivateRoute>
-        } />
-        <Route path='play' element={
-          <PrivateRoute>
-            <SelectProvider>
-              <GamePlay/>
-            </SelectProvider>
-          </PrivateRoute>
-        } />
+    <Route element={<RootLayout/>}>
+        <Route path='/login' element={<LoginComponent/>}/>
+        <Route element={<PrivateRoute/>}>
+          <Route path='select' element={<SelectProvider><SelectContent/></SelectProvider>} />
+          <Route path='play' element={<SelectProvider><GamePlay/></SelectProvider>} />
+        </Route>
+        
 
-      <Route path='*' element={<NotFound/>}/>
+        <Route path='*' element={<NotFound/>}/>
     </Route>
    
 

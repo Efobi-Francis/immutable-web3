@@ -33,9 +33,9 @@ export const login = async () => {
 
 }
 
-export const loginCallback = async () => {
-  await  passportInstance.loginCallback()
-  window.location.href = configuration.redirectUri
+export const loginCallback = () => {
+  passportInstance.loginCallback()
+  
 }
 
 export const logoutCallback = () => {
