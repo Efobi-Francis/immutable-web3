@@ -14,7 +14,7 @@ export const AuthProvider = ({ children }) => {
   const login = (data) => {
     // This is where you would typically make a request to your authentication API
     setUser(data)
-    navigate('/')
+    navigate('/select')
     console.log(data)
   };
 

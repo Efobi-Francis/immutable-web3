@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import { AuthContext } from './AuthContext.jsx';
 
 export const PrivateRoute = ({ children }) => {
-  const { user } = AuthContext()
+  const { user } = useContext(AuthContext)
 
   if (!user) {
     // user is not authenticated
