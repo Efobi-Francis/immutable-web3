@@ -1,16 +1,18 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Outlet } from 'react-router-dom'
-
-import { AuthProvider } from '../components/AuthContext.jsx'
 
 import logobonus from '../assets/images/logo-bonus.svg'
 import imagerulesbonus from '../assets/images/image-rules-bonus.svg'
 import iconclose from '../assets/images/icon-close.svg'
 import ScoreBoard from '../components/ScoreBoard.jsx'
+import { AuthContext } from '../components/AuthContext.jsx'
+import LoginComponent from '../components/LoginComponent.jsx'
 
 
 export default function RootLayout() {
     const [isClicked, setIsClicked] = useState(false)
+
+    const { isAuthenticated } = useContext(AuthContext)
     
     const handleClickOpen = () => {
         setIsClicked(true)
@@ -31,7 +33,7 @@ export default function RootLayout() {
                 </header>
 
                 <main className=' text-white flex justify-center'>
-                    <Outlet/>
+                    {isAuthenticated ? (<Outlet/>) : (<LoginComponent/>)}
                 </main>
 
                 <footer className=' flex justify-center text-white pb-20 font-Barlow '>
