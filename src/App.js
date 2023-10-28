@@ -16,8 +16,8 @@ import Login from './components/LoginComponent.jsx';
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout/>}>
-      <Route index element={<Login/>}/>
-      <Route path='select' element={
+      <Route path='login' element={<Login/>}/>
+      <Route index element={
         <PrivateRoute>
           <SelectProvider><SelectContent/></SelectProvider>
         </PrivateRoute>

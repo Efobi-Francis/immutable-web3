@@ -1,18 +1,18 @@
 import { Navigate, useLocation } from "react-router-dom";
-import { login, loginCallback } from "../auth/ImmutableAuth.ts";
+import { login } from "../auth/ImmutableAuth.ts";
 
 export const PrivateRoute = ({ children }) => {
   const location = useLocation();
 
-  if (login) {
+  if (!login) {
     // user is not authenticated
     return (
       <Navigate
-        to="/select"
+        to="login"
         state={{ from: location }}
       />
     );
-  } else {
+  } else if (login) {
     return (
         <Navigate
         to="/"
