@@ -5,7 +5,7 @@ import { AuthContext } from './AuthContext.jsx';
 export const PrivateRoute = ({ children }) => {
   const { isAuthenticated } = useContext(AuthContext);
 
-  if (isAuthenticated) {
+  if (!isAuthenticated) {
     return (
         {children}
     )
