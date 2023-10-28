@@ -11,13 +11,14 @@ import GamePlay from './components/bonus/GamePlay.jsx';
 import NotFound from './components/NotFound.jsx';
 import './App.css'
 import Login from './components/LoginComponent.jsx';
+import { AuthProvider } from './components/AuthContext.jsx';
 
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout/>}>
       <Route path='login' element={<Login/>}/>
-      <Route index element={
+      <Route path='/' element={
         <PrivateRoute>
           <SelectProvider><SelectContent/></SelectProvider>
         </PrivateRoute>
@@ -37,11 +38,13 @@ const router = createBrowserRouter(
 function App() {
 
   return (
-    <ScoreProvider>
-      <div>
-        <RouterProvider router={router}/>
-      </div>
-    </ScoreProvider>
+    <AuthProvider>
+      <ScoreProvider>
+        <div>
+          <RouterProvider router={router}/>
+        </div>
+      </ScoreProvider>
+    </AuthProvider>
   )
 }
 

@@ -1,18 +1,9 @@
-import { Navigate, useLocation } from "react-router-dom";
-import { login } from "../auth/ImmutableAuth.ts";
+import { Navigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from './AuthContext.jsx';
 
 export const PrivateRoute = ({ children }) => {
-  const location = useLocation();
+  const { isAuthenticated } = useContext(AuthContext);
 
-  if (!login) {
-    // user is not authenticated
-    return (
-      <Navigate
-        to="login"
-        state={{ from: location }}
-      />
-    );
-  } 
-
-  return children;
+  return isAuthenticated ? children : <Navigate to="/login" replace />;
 };

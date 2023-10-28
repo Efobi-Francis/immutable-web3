@@ -33,3 +33,9 @@ export const login = async () => {
 export const loginCallback = () => {
   passportInstance.loginCallback()
 }
+
+export const logoutCallback = () => {
+  // Call the logout method of your passport instance
+  passportInstance.logout()
+}
+
