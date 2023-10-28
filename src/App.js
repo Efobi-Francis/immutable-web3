@@ -17,32 +17,16 @@ import LoginComponent from './components/LoginComponent.jsx';
 const router = createBrowserRouter(
   createRoutesFromElements(
 
-    <Route path='/' element={<RootLayout/>}>
+    <Route element={<RootLayout/>}>
         <Route path='/login' element={<LoginComponent/>}/>
         <Route element={<PrivateRoute/>}>
-          <Route index element={<SelectProvider><SelectContent/></SelectProvider>} />
+          <Route path='/select' element={<SelectProvider><SelectContent/></SelectProvider>} />
           <Route path='/play' element={<SelectProvider><GamePlay/></SelectProvider>} />
         </Route>
-        
 
         <Route path='*' element={<NotFound/>}/>
     </Route>
    
-
-    // <Route path="/" element={<RootLayout/>}>
-    //   <Route path='login' element={<Login/>}/>
-    //   <Route path='/' element={
-    //     <PrivateRoute>
-    //       <SelectProvider><SelectContent/></SelectProvider>
-    //     </PrivateRoute>
-    //   }/>
-    //   <Route path='play' element={
-    //     <PrivateRoute>
-    //       <SelectProvider><GamePlay/></SelectProvider>
-    //     </PrivateRoute>
-    //   }/>
-    //   <Route path='*' element={<NotFound/>}/>
-    // </Route>
   )
 );
 

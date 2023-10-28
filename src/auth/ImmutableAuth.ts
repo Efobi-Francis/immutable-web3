@@ -16,7 +16,7 @@ const configuration: PassportModuleConfiguration = {
     environment: config.Environment.SANDBOX,
   }),
   clientId: process.env.REACT_APP_CLIENT_ID as string,
-  redirectUri: `https://rps-web3-game.netlify.app`,
+  redirectUri: `https://rps-web3-game.netlify.app/select`,
   logoutRedirectUri: 'https://rps-web3-game.netlify.app/logout',
   audience: 'platform_api',
   scope: 'openid offline_access email transact'
