@@ -5,7 +5,6 @@ import logobonus from '../assets/images/logo-bonus.svg'
 import imagerulesbonus from '../assets/images/image-rules-bonus.svg'
 import iconclose from '../assets/images/icon-close.svg'
 import ScoreBoard from '../components/ScoreBoard.jsx'
-import { PrivateRoute } from '../components/PrivateRoute.jsx'
 
 
 export default function RootLayout() {
@@ -31,7 +30,7 @@ export default function RootLayout() {
                 </header>
 
                 <main className=' text-white flex justify-center'>
-                   <PrivateRoute/>
+                   <Outlet/>
                 </main>
 
                 <footer className=' flex justify-center text-white pb-20 font-Barlow '>
