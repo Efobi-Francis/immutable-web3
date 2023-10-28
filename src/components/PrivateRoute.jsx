@@ -4,16 +4,21 @@ import { login, loginCallback } from "../auth/ImmutableAuth.ts";
 export const PrivateRoute = ({ children }) => {
   const location = useLocation();
 
-  if (!login) {
+  if (login) {
     // user is not authenticated
     return (
       <Navigate
-        to="/"
+        to="/select"
         state={{ from: location }}
       />
     );
   } else {
-    return loginCallback()
+    return (
+        <Navigate
+        to="/"
+        state={{ from: location }}
+      />
+    )
   }
 
   return children;

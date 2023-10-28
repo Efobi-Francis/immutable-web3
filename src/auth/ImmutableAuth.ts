@@ -32,10 +32,5 @@ export const login = async () => {
 }
 
 export const loginCallback = () => {
-  
-  passportInstance.loginCallback().then(async () => {
-    if (await login()) {
-      return redirect("/select")
-    }
-  })
+  passportInstance.loginCallback
 }
