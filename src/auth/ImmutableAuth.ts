@@ -1,6 +1,5 @@
 import { config, passport } from '@imtbl/sdk';
 import { ImmutableConfiguration } from '@imtbl/sdk/dist/config';
-import { redirect } from 'react-router-dom';
 
 interface PassportModuleConfiguration {
   baseConfig: ImmutableConfiguration;
@@ -32,5 +31,5 @@ export const login = async () => {
 }
 
 export const loginCallback = () => {
-  passportInstance.loginCallback
+  passportInstance.loginCallback()
 }
