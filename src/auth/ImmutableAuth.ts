@@ -1,5 +1,7 @@
 import { config, passport } from '@imtbl/sdk';
 import { ImmutableConfiguration } from '@imtbl/sdk/dist/config';
+import { useAuth } from '../components/AuthContext.jsx';
+import { resolve } from 'path-browserify';
 
 interface PassportModuleConfiguration {
   baseConfig: ImmutableConfiguration;
@@ -22,20 +24,48 @@ const configuration: PassportModuleConfiguration = {
   scope: 'openid offline_access email transact'
 };
 
+function verifyConfiguration(config) {
+  const mandatoryProperties = ['baseConfig', 'clientId', 'redirectUri', 'logoutRedirectUri'];
+
+  for (const property of mandatoryProperties) {
+    if (!(property in config)) {
+      console.error(`Missing mandatory property: ${property}`);
+      return false;
+    }
+  }
+
+  console.log("All mandatory properties are set.");
+  return true;
+}
+
+verifyConfiguration(configuration);
+
 const passportInstance = new passport.Passport(configuration);
 
 const provider = passportInstance.connectEvm();
 
-export const login = async () => {
-  return (
-    await provider.request({ method: "eth_requestAccounts" })
-  )
 
+export const Login = async () => {
+  
+  try {
+    const status = await provider.request({ method: "eth_requestAccounts" });
+    return status;
+
+  } catch (error) {
+    console.error("Login failed:", error);
+  }
 }
 
-export const loginCallback = () => {
-  passportInstance.loginCallback()
+export const getUserInfo = () => {
+
   
+  return passportInstance.getUserInfo().then(UserProfile => {
+    return UserProfile;
+  }).catch(error => {
+    console.log('not ok', error);
+    return false;
+  });
+
 }
 
 export const logoutCallback = () => {
