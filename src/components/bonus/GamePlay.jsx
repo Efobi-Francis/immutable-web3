@@ -70,7 +70,7 @@ export default function GamePlay() {
 
 
   const playAgain = () => {
-    navigate('/select')
+    navigate('/')
   }
   
   const btnPosition = `m-auto w-32 h-32 z-10 lg:w-60 lg:h-60`
